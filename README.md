@@ -2,7 +2,7 @@
 Handy scripts from ~/bin
 
  * `clean`
-    Clean Arch Linux install of all packages except those listed in $ignoregrp & ignorepkg
+    Clean Arch Linux install of all packages except those listed in ignoregrp & ignorepkg
  * `pornoff`
     Unmount EncFS folder
  * `pornon`
