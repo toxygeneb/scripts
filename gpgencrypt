@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Encrypt folder with GnuPG using specified email address
+
+# Example: gpgencrypt ~/Documents me@example.com
+
+ROOT_UID=0          # Only users with $UID 0 have root privileges
+EXPECTED_ARGS=2     # Number of command line arguments accepted
+E_SUCCESS=0         # Successful exit
+E_WRONGARGS=85      # Wrong number of arguments
+E_ROOT=86           # Root exit error
+E_NOFOLDER=89       # Folder does not exist
+E_COMMANDFAIL=90    # Command failed
+
+# Do not run as root, of course
+if [ "$UID" -eq "$ROOT_UID" ]
+then
+    echo "Must not be root to run this script."
+    exit $E_ROOT
+fi
+
+# Two required arguments: folder and email address
+if [ "$#" -ne "2" ]
+then
+    echo "Wrong number of command line arguments."
+    echo "Example: \$ gpgencrypt [folder] [email address]"
+    exit $E_WRONGARGS
+fi
+
+# Check source folder exists
+if [ -d $1 ]
+then
+    SOURCE=$1
+    RECIPIENT=$2
+else
+    echo "Source directory not valid."
+    exit $E_NOFOLDER
+fi
+
+tar cvfz ${HOME}/${RECIPIENT}.tar.gz ${SOURCE} || exit E_COMMANDFAIL
+gpg --recipient ${RECIPIENT} --armor --encrypt ${HOME}/${RECIPIENT}.tar.gz || exit E_COMMANDFAIL
+rm -rf ${HOME}/${RECIPIENT}.tar.gz || exit E_COMMANDFAIL
+
+exit $E_SUCCESS
