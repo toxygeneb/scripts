@@ -4,6 +4,7 @@ Handy scripts from ~/bin
  * **`clean`**
  
     Clean Arch Linux install of all packages except those listed in ignoregrp & ignorepkg
+
         - TODO: lists of groups and packages as arguments
         - TODO: arguments to append/override defaults groups and packages
         - TODO: add error checking for groups & packages
@@ -11,6 +12,7 @@ Handy scripts from ~/bin
  * **`pornoff`**
 
     Unmount EncFS folder
+
         - TODO: check existence of directory before unmounting
         - TODO: check for unmounting errors
         - TODO: add multiple folder support
@@ -19,6 +21,7 @@ Handy scripts from ~/bin
  * **`pornon`**
 
     Mount EncFS folder
+
         - TODO: check existence of directory before mounting
         - TODO: add keyfile support
 
