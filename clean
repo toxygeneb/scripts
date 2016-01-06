@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Clean Arch Linux install of all packages except those listed
+# in $ignoregrp & ignorepkg
+
+# Requires: root privileges
+
+# TODO: lists of groups and packages as arguments
+# TODO: arguments to append/override defaults groups and packages
+# TODO: add error checking for groups & packages
+
+ROOT_UID=0     # Only users with $UID 0 have root privileges
+E_NOTROOT=87   # Non-root exit error
+
+# Run as root, of course
+if [ "$UID" -ne "$ROOT_UID" ]
+then
+  echo "Must be root to run this script."
+  exit $E_NOTROOT
+fi
+
+ignoregrp="base base-devel"
+ignorepkg=""
+
+comm -23 <(pacman -Qqt | sort) <(echo $ignorepkg | tr ' ' '\n' | cat <(pacman -Sqg $ignoregrp) - | sort -u)

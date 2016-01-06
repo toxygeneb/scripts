@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Set id3v2 bpm tag from comma separated list of filenames and bpms
+
+ROOT_UID=0     # Only users with $UID 0 have root privileges.
+E_ROOT=86      # Root exit error.
+
+# Do not run as root, of course.
+if [ "$UID" -eq "$ROOT_UID" ]
+then
+  echo "Must not be root to run this script."
+  exit $E_ROOT
+fi
+
+bpmfile=$1
+while read line
+do
+  filename=${line%,*}
+  bpm=${line#*,}
+  id3v2 --TBPM "$bpm" "$filename"
+done < $bpmfile

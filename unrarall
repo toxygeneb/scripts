@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Unpack all rar files in directory
+
+ROOT_UID=0     # Only users with $UID 0 have root privileges.
+E_ROOT=86      # Root exit error.
+
+# Do not run as root, of course.
+if [ "$UID" -eq "$ROOT_UID" ]
+then
+  echo "Must not be root to run this script."
+  exit $E_ROOT
+fi
+
+SAVEIFS=$IFS
+IFS=$(echo -en "\n\b")
+
+for i in $(find $(pwd) -name '*.rar')
+    do
+    cd $(dirname $i)
+unrar x $i
+done
+
+IFS=$SAVEIFS

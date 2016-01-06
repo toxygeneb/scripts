@@ -1,0 +1,145 @@
+# Based on @octocat/.gitignore[1] and @gsnedders/gitignore/Python.gitignore[2]
+# https://gist.github.com/octocat/9257657
+# https://github.com/github/gitignore/blob/master/Python.gitignore
+
+#########################################
+
+# Compiled source #
+###################
+# See also Python related below
+
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# See also Python related below
+ 
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+ 
+# Logs and databases #
+######################
+
+*.log
+*.sql
+*.sqlite
+ 
+# OS generated files #
+######################
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+.desktop
+
+# Filesystem and User notes #
+#############################
+
+acl.list
+*.acl
+.acl*
+*.lock
+*.lck
+
+# Backup and temporary working files #
+######################################
+# See also IDE files below
+
+*.bak
+*.backup
+*.swp
+*~
+*#
+*.tmp
+tmp*
+
+# IDE files #
+#############
+
+nbproject
+.~lock.*
+.buildpath
+.idea
+.project
+.settings
+composer.lock
+.classpath
+.metadata
+
+# Python related #
+##################
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/

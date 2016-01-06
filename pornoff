@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Unmount EncFS folder
+
+# TODO: check existence of directory before unmounting
+# TODO: check for unmounting errors
+# TODO: add multiple folder support
+# TODO: add keyfile support
+
+ROOT_UID=0     # Only users with $UID 0 have root privileges
+E_ROOT=86      # Root exit error
+
+# Do not run as root, of course.
+if [ "$UID" -eq "$ROOT_UID" ]
+then
+  echo "Must not be root to run this script."
+  exit $E_ROOT
+fi
+
+if [ -z $1 ]
+then
+    ENCFOLDER=Private
+else
+    ENCFOLDER=$1
+fi
+
+fusermount -u ~/$ENCFOLDER

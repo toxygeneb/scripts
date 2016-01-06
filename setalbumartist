@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Set id3v2 album artist tag from track artist tag for all mp3 files
+# in current directory
+
+ROOT_UID=0     # Only users with $UID 0 have root privileges
+E_ROOT=86      # Root exit error
+
+# Do not run as root, of course
+if [ "$UID" -eq "$ROOT_UID" ]
+then
+  echo "Must not be root to run this script."
+  exit $E_ROOT
+fi
+
+for file in *.mp3 ; do 
+   tag=`mutagen-inspect "$file" | grep TPE1`
+   tagdata=${tag#*=}
+   echo $tagdata
+   id3v2 --TPE2 "$tagdata" "$file"
+done

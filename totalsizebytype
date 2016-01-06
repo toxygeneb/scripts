@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Display collective file size for all files of a certain type
+
+# Example: totalsizebytye ~/Music mp3
+
+dir=$1
+type=$2
+total=0
+
+files=`find $dir -type f -iname "*.$type"`
+
+for f in $files; do
+    if [ -f $f ]; then
+        size=`stat -c "%s" "$f"`
+        total=$(($total + $size))
+    fi
+done
+
+totalk=$(echo "scale=2; $total / 1024" | bc -l)
+totalm=$(echo "scale=2; $totalk / 1024" | bc -l)
+
+echo "Total file size for all \"$type\" files: ${total}b / ${totalk}Kb / ${totalm}Mb"

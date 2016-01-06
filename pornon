@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Mount EncFS folder
+
+# TODO: check existence of directory before mounting
+# TODO: add keyfile support
+
+ROOT_UID=0     # Only users with $UID 0 have root privileges
+E_ROOT=86      # Root exit error
+
+# Do not run as root, of course.
+if [ "$UID" -eq "$ROOT_UID" ]
+then
+  echo "Must not be root to run this script."
+  exit $E_ROOT
+fi
+
+if [ -z $1 ]
+then
+    ENCFOLDER=Private
+else
+    ENCFOLDER=$1
+fi
+
+encfs ~/.$ENCFOLDER ~/$ENCFOLDER
