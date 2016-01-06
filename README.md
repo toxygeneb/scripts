@@ -2,13 +2,18 @@
 Handy scripts from ~/bin
 
  * **`clean`**
- 
+
     Clean Arch Linux install of all packages except those listed in ignoregrp & ignorepkg
 
         - TODO: lists of groups and packages as arguments
         - TODO: arguments to append/override defaults groups and packages
         - TODO: add error checking for groups & packages
 
+ * **`gpgencrypt`**
+
+    Encrypt folder with GnuPG using speciified email address
+    Example: gpgencrypt ~/Documents me@example.com
+ 
  * **`pornoff`**
 
     Unmount EncFS folder
