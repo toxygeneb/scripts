@@ -11,8 +11,8 @@ Handy scripts from ~/bin
 
  * **`gpgencrypt`**
 
-    Encrypt folder with GnuPG using speciified email address  
-    Example: `gpgencrypt` ~/Documents me@example.com
+    Encrypt folder with GnuPG using speciified email address. 
+    Example: `gpgencrypt ~/Documents me@example.com`
  
  * **`pornoff`**
 
