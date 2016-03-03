@@ -1,11 +1,13 @@
 #!/bin/bash
 
-# Make ISO image file of optical drive
+# Make image file of optical drive
 
 # TODO: Add mount check
 
-ROOT_UID=0     # Only users with $UID 0 have root privileges
-E_ROOT=86      # Root exit error
+ROOT_UID=0      # Only users with $UID 0 have root privileges
+E_ROOT=86       # Root exit error
+E_BLOCKSIZE=87  # Source blocksize error
+E_VOLUMESIZE=88 # Source volume size error
 
 SOURCE_DRIVE=/dev/sr0
 
@@ -23,6 +25,18 @@ else
     IMAGE_FILE=${HOME}/$1
 fi
 
-dd if=${SOURCE_DRIVE} of=${IMAGE_FILE}
+BLOCK_SIZE=`isoinfo -d -i $SOURCE_DRIVE | grep "^Logical block size is:" | cut -d " " -f 5`
+if test "$BLOCK_SIZE" = ""; then
+    echo Source blocksize error
+    exit $E_BLOCKSIZE
+fi
+
+VOLUME_SIZE=`isoinfo -d -i $device | grep "^Volume size is:" | cut -d " " -f 4`
+if test "$VOLUME_SIZE" = ""; then
+    echo Source volume size error
+    exit $E_VOLUMESIZE
+fi
+
+dd if=${SOURCE_DRIVE} of=${IMAGE_FILE} bs=${BLOCK_SIZE} count=${VOLUME_SIZE}
 
 echo ISO image file created: ${IMAGE_FILE}
