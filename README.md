@@ -13,6 +13,12 @@ Handy scripts from ~/bin
 
     Encrypt folder with GnuPG using speciified email address. 
     Example: `gpgencrypt ~/Documents me@example.com`
+    
+ * **`mkimg`**
+ 
+    Make ISO image file of optical drive
+    
+        - TODO: Add mount check
  
  * **`pornoff`**
 

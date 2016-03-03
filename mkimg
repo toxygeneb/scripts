@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Make ISO image file of optical drive
+
+# TODO: Add mount check
+
+ROOT_UID=0     # Only users with $UID 0 have root privileges
+E_ROOT=86      # Root exit error
+
+SOURCE_DRIVE=/dev/sr0
+
+# Do not run as root, of course.
+if [ "$UID" -eq "$ROOT_UID" ]
+then
+  echo "Must not be root to run this script."
+  exit $E_ROOT
+fi
+
+if [ -z $1 ]
+then
+    IMAGE_FILE=${HOME}/`date +%Y%m%d%H%M%S`.iso
+else
+    IMAGE_FILE=${HOME}/$1
+fi
+
+dd if=${SOURCE_DRIVE} of=${IMAGE_FILE}
+
+echo ISO image file created: ${IMAGE_FILE}
