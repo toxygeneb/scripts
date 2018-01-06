@@ -2,7 +2,7 @@
 Handy scripts from ~/bin
 
 ** !!! No longer maintained.
-Replaced by[scripts-ng](https:github.com/toxygeneb/scripts-ng) project !!!**
+Replaced by [scripts-ng](https:github.com/toxygeneb/scripts-ng) project !!! **
 
  * **`clean`**
 
