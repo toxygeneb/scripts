@@ -1,6 +1,9 @@
 # scripts
 Handy scripts from ~/bin
 
+** !!! No longer maintained.
+Replaced by[scripts-ng](https:github.com/toxygeneb/scripts-ng) project !!!**
+
  * **`clean`**
 
     Clean Arch Linux install of all packages except those listed in ignoregrp & ignorepkg
